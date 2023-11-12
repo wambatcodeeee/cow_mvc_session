@@ -19,22 +19,27 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 
-	@Override
-	public void join(MemberRequest memberRequest) {
-		Member member = new Member(memberRequest.getId(), memberRequest.getName());
-		memberRepository.save(member);
-	}
+	//@Override
+	//public void join(MemberRequest memberRequest) {
+	//	Member member = new Member(memberRequest.getId(), memberRequest.getName());
+	//	memberRepository.save(member);
+	//}
 
-	// @Override
-	// public MemberResponse join(MemberRequest memberRequest) {
-	// 	Member member = new Member(memberRequest.getId(), memberRequest.getName());
-	// 	memberRepository.save(member);
-	// 	return MemberResponse.of(member);
-	// }
+	@Override
+	public MemberResponse join(MemberRequest memberRequest) {
+		Member member = new Member(memberRequest.getId(), memberRequest.getName());
+	 	memberRepository.save(member);
+	 	return MemberResponse.of(member);
+	}
 
 	@Override
 	public Member findOne(Long memberId) {
 		return memberRepository.findById(memberId);
+	}
+
+	@Override
+	public MemberResponse findOf(Member member){
+		return MemberResponse.of(member);
 	}
 
 	@Override

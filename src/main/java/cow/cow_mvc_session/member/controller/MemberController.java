@@ -1,5 +1,6 @@
 package cow.cow_mvc_session.member.controller;
 
+import cow.cow_mvc_session.member.controller.dto.MemberResponse;
 import org.springframework.web.bind.annotation.*;
 
 import cow.cow_mvc_session.member.controller.dto.MemberRequest;
@@ -15,21 +16,28 @@ public class MemberController {
 
 	private final MemberService memberService;
 
+	//@PostMapping("/new")
+	//public String create(@RequestBody final MemberRequest memberRequest) {
+	//	memberService.join(memberRequest);
+	//	return "회원저장 성공!";
+	//}
+
 	@PostMapping("/new")
-	public String create(@RequestBody final MemberRequest memberRequest) {
-		memberService.join(memberRequest);
-		return "회원저장 성공!";
+	  public MemberResponse create(@RequestBody final MemberRequest memberRequest) {
+	  return memberService.join(memberRequest);
 	}
 
-	// @PostMapping("/new")
-	// public MemberResponse create(@RequestBody final MemberRequest memberRequest) {
-	// 	return memberService.join(memberRequest);
-	// }
+	//@GetMapping("/{memberId}")
+	//public String findMember(@PathVariable final Long memberId) {
+	//	Member member = memberService.findOne(memberId);
+	//	return "member 아이디: " + member.getId() + ", member 이름: " + member.getName();
+	//}
 
 	@GetMapping("/{memberId}")
-	public String findMember(@PathVariable final Long memberId) {
+	public MemberResponse findMember(@PathVariable final Long memberId) {
 		Member member = memberService.findOne(memberId);
-		return "member 아이디: " + member.getId() + ", member 이름: " + member.getName();
+		memberService.findOf(member);
+		return memberService.findOf(member);
 	}
 
 	@PatchMapping("/{memberId}")
