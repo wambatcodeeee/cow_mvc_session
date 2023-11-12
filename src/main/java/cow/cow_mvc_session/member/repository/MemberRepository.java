@@ -7,4 +7,6 @@ public interface MemberRepository {
 	void save(Member member);
 
 	Member findById(Long memberId);
+
+	void delete(Member member);
 }

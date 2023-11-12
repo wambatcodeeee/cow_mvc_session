@@ -1,10 +1,10 @@
 package cow.cow_mvc_session.member.service;
 
+import cow.cow_mvc_session.member.controller.dto.MemberResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cow.cow_mvc_session.member.controller.dto.MemberRequest;
-import cow.cow_mvc_session.member.controller.dto.MemberResponse;
 import cow.cow_mvc_session.member.entity.Member;
 import cow.cow_mvc_session.member.repository.MemberRepository;
 
@@ -35,5 +35,20 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public Member findOne(Long memberId) {
 		return memberRepository.findById(memberId);
+	}
+
+	@Override
+	public Member updateMember(Long memberId, String name) {
+		Member member = memberRepository.findById(memberId);
+		member.setName(name);
+		memberRepository.save(member);
+		return member;
+	}
+
+	@Override
+	public Member deleteMember(Long memberId){
+		Member member = memberRepository.findById(memberId);
+		memberRepository.delete(member);
+		return member;
 	}
 }

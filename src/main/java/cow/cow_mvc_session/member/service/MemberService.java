@@ -11,6 +11,8 @@ public interface MemberService {
 
 	Member findOne(Long memberId);
 
-	// Member updateMember();
+	Member updateMember(Long id, String name);
+
+	Member deleteMember(Long memberId);
 }
 

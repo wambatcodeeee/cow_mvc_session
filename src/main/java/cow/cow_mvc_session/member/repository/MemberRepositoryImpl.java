@@ -24,4 +24,9 @@ public class MemberRepositoryImpl implements MemberRepository {
 	public Member findById(Long memberId) {
 		return store.get(memberId);
 	}
+
+	@Override
+	public void delete(Member member){
+		store.remove(member.getId());
+	}
 }
