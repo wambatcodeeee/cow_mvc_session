@@ -9,6 +9,8 @@ import cow.cow_mvc_session.member.entity.Member;
 import cow.cow_mvc_session.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/members")
 @RequiredArgsConstructor
@@ -50,6 +52,11 @@ public class MemberController {
 	public String deleteMember(@PathVariable final Long memberId){
 		memberService.deleteMember(memberId);
 		return "멤버ID "+ memberId + " 삭제완료.";
+	}
+
+	@GetMapping("/all")
+	public List<Member> memberList(){
+		return memberService.findAll();
 	}
 }
 

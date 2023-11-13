@@ -8,6 +8,8 @@ import cow.cow_mvc_session.member.controller.dto.MemberRequest;
 import cow.cow_mvc_session.member.entity.Member;
 import cow.cow_mvc_session.member.repository.MemberRepository;
 
+import java.util.List;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 	//    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -55,5 +57,10 @@ public class MemberServiceImpl implements MemberService{
 		Member member = memberRepository.findById(memberId);
 		memberRepository.delete(member);
 		return member;
+	}
+
+	@Override
+	public List<Member> findAll(){
+		return memberRepository.findAll();
 	}
 }
