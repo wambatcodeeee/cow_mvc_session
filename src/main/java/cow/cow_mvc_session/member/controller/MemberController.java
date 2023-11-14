@@ -24,7 +24,7 @@ public class MemberController {
 	//	return "회원저장 성공!";
 	//}
 
-	@PostMapping("/new")
+	@PostMapping
 	  public MemberResponse create(@RequestBody final MemberRequest memberRequest) {
 	  return memberService.join(memberRequest);
 	}
@@ -54,7 +54,7 @@ public class MemberController {
 		return "멤버ID "+ memberId + " 삭제완료.";
 	}
 
-	@GetMapping("/all")
+	@GetMapping
 	public List<Member> memberList(){
 		return memberService.findAll();
 	}
